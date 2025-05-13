@@ -3,6 +3,6 @@
 extern rd::Selector selector;
 
 void auton();
-void best_auton();
-void simple_auton();
-void good_auton();
+void bestAuton();
+void simpleAuton();
+void goodAuton();
