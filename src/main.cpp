@@ -5,7 +5,6 @@
 #include "autonomous.h"
 #include "userControl.h"
 
-lv_obj_t* brainbanner;
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
