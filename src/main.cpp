@@ -5,6 +5,12 @@
 #include "autonomous.h"
 #include "userControl.h"
 
+rd::Selector selector({
+    {"Best auton", best_auton},
+    {"Simple auton", simple_auton},
+    {"Good auton", good_auton},
+});
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
