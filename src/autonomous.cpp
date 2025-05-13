@@ -1,5 +1,10 @@
 #include "autonomous.h"
 
+rd::Selector selector = rd::Selector({
+    {"Best auton", best_auton},
+    {"Simple auton", simple_auton},
+    {"Good auton", good_auton},
+});
 
 void auton() {
     selector.run_auton();
