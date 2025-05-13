@@ -257,7 +257,7 @@ const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST uint8_t brainBanner344EMap
 #endif
 };
 
-const lv_img_dsc_t brainbanner344e = {
+const lv_img_dsc_t brainBanner344E = {
   .header.cf = LV_IMG_CF_TRUE_COLOR_ALPHA,
   .header.always_zero = 0,
   .header.reserved = 0,
