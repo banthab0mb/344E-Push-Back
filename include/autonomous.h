@@ -6,6 +6,8 @@ extern rd::Selector selector;
 void default_constants();
 
 void auton();
-void bestAuton();
-void simpleAuton();
-void goodAuton();
+void auton1();
+void auton2();
+void auton3();
+void tug();
+void interfered_example();

@@ -1,12 +1,15 @@
 #include "autonomous.h"
 #include "robotConfig.h"
 
+// Auton selector constructor
 rd::Selector selector = rd::Selector({
-    {"Best auton", bestAuton},
-    {"Simple auton", simpleAuton},
-    {"Good auton", goodAuton},
+    {"Auton 1", auton1},
+    {"Auton 2", auton2}, // NAME THESE FOR REAL
+    {"Auton 3", auton3},
 });
 
+//  Starts the auton selector.
+//  Shouldn't need anything else in here as the selector takes care of calls.
 void auton() {
     selector.run_auton();
 }
@@ -54,14 +57,77 @@ void default_constants() {
   chassis.pid_angle_behavior_set(ez::shortest);  // Changes the default behavior for turning, this defaults it to the shortest path there
 }
 
-void bestAuton() {
-    // Add your best autonomous code here
+///
+// Auton functions
+///
+
+void auton1() { 
+    // Drive and turn test
+    chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
+    chassis.pid_wait();
+
+    chassis.pid_turn_set(45_deg, TURN_SPEED);
+    chassis.pid_wait();
+
+    chassis.pid_turn_set(-45_deg, TURN_SPEED);
+    chassis.pid_wait();
+
+    chassis.pid_turn_set(0_deg, TURN_SPEED);
+    chassis.pid_wait();
+
+    chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
+    chassis.pid_wait();
 }
 
-void simpleAuton() {
-    // Add your simple autonomous code here
+void auton2() {
+    // Do stuff
 }
 
-void goodAuton() {
-    // Add your good autonomous code here
+void auton3() {
+    // Do stuff
+}
+
+
+// Feel free to remove these examples. thought they were good to have for reference
+
+// See other examples in the EZ-Template example project https://github.com/EZ-Robotics/EZ-Template/blob/main/EZ-Template-Example-Project/src/autons.cpp
+
+ 
+///
+// Interference example
+///
+void tug(int attempts) {
+	for(int i = 0; i < attempts - 1; i++) {
+		// Attempt to drive backward
+		printf("i - %i", i);
+		chassis.pid_drive_set(-12_in, 127);
+		chassis.pid_wait();
+
+		// If failsafed...
+		if(chassis.interfered) {
+			chassis.drive_sensor_reset();
+			chassis.pid_drive_set(-2_in, 20);
+			pros::delay(1000);
+		}
+		// If the robot successfully drove back, return
+		else {
+			return;
+		}
+	}
+}
+
+// If there is no interference, the robot will drive forward and turn 90
+// degrees. If interfered, the robot will drive forward and then attempt to
+// drive backward.
+void interfered_example() {
+	chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
+	chassis.pid_wait();
+
+	if(chassis.interfered) {
+		tug(3);
+		return;
+	}
+
+	chassis.pid_turn_set(90_deg, TURN_SPEED);
+	chassis.pid_wait();
 }

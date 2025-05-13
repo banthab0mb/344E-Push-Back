@@ -6,7 +6,6 @@
 #include "userControl.h"
 #include "ezTemplateExtras.h"
 
-
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
 // https://ez-robotics.github.io/EZ-Template/
@@ -84,6 +83,6 @@ void opcontrol() {
  *     is only enabled when you're not connected to competition control.
  * - gives you a GUI to change your PID values live by pressing X
  */
-void ez_template_extras() { 
+void ezTemplateExtras() { 
 	ezExtras();
 }
