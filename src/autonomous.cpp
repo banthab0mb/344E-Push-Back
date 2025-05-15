@@ -3,8 +3,8 @@
 
 // Auton selector constructor
 rd::Selector selector = rd::Selector({
-    {"Auton 1", moveForward},
-    {"Auton 2", driveAndTurn}, // NAME THESE FOR REAL
+    {"Move Forward", moveForward},
+    {"Drive and Turn", driveAndTurn}, // NAME THESE FOR REAL
     {"Auton 3", auton3},
 });
 
