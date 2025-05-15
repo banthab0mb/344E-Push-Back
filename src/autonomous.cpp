@@ -3,8 +3,8 @@
 
 // Auton selector constructor
 rd::Selector selector = rd::Selector({
-    {"Auton 1", auton1},
-    {"Auton 2", auton2}, // NAME THESE FOR REAL
+    {"Auton 1", moveForward},
+    {"Auton 2", driveAndTurn}, // NAME THESE FOR REAL
     {"Auton 3", auton3},
 });
 
@@ -61,7 +61,13 @@ void default_constants() {
 // Auton functions
 ///
 
-void auton1() { 
+void moveForward() { 
+    // Drives forward 24 inches
+    chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
+    chassis.pid_wait();
+}
+
+void driveAndTurn() {
     // Drive and turn test
     chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
     chassis.pid_wait();
@@ -77,10 +83,6 @@ void auton1() {
 
     chassis.pid_drive_set(-24_in, DRIVE_SPEED, true);
     chassis.pid_wait();
-}
-
-void auton2() {
-    // Do stuff
 }
 
 void auton3() {
