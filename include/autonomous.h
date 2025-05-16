@@ -7,7 +7,7 @@ void default_constants();
 void auton();
 void moveForward();
 void driveAndTurn();
-void auton3();
+void redLeft();
 
 void tug();
 void interfered_example();

@@ -1,3 +1,3 @@
 #include "main.h"
 
-void myInitalize();
+void setIntake();

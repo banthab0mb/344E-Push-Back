@@ -2,6 +2,7 @@
 #include "robotConfig.h"
 #include "ezTemplateExtras.h"
 #include "EZ-Template/drive/drive.hpp"
+#include "controls.h"
 
 // Create lvgl object for the brain banner image
 lv_obj_t* brainBanner;
@@ -33,6 +34,7 @@ void userControl() {
 		// . . .
 
         // functions etc.
+		setIntake();
 
 		pros::delay(ez::util::DELAY_TIME);	// This is used for timer calculations! Keep this ez::util::DELAY_TIME
 	}

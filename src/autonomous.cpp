@@ -1,11 +1,15 @@
 #include "autonomous.h"
 #include "robotConfig.h"
 
+// Team colors
+// red = "FF0000"
+// blue = "0000FF"
+
 // Auton selector constructor
 rd::Selector selector = rd::Selector({
     {"Move Forward", moveForward},
     {"Drive and Turn", driveAndTurn}, // NAME THESE FOR REAL
-    {"Auton 3", auton3},
+    {"Red Left", redLeft},
 });
 
 //  Starts the auton selector.
@@ -85,10 +89,13 @@ void driveAndTurn() {
     chassis.pid_wait();
 }
 
-void auton3() {
-    // Do stuff
+void redLeft() {
+    LEDmanager.setColor(0xFF0000);
 }
 
+void blueLeft() {
+    LEDmanager.setColor(0x0000FF);
+}
 
 // Feel free to remove these examples. thought they were good to have for reference
 
