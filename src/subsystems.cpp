@@ -1,6 +1,4 @@
-#include "robotConfig.h"
-#include "EZ-Template/drive/drive.hpp"
-#include "stormlib/api.hpp"
+#include "main.h"
 
 // Chassis constructor
 ez::Drive chassis(
@@ -29,7 +27,18 @@ stormlib::aRGB strand1(4, 41); // D
 stormlib::aRGB strand2(5, 41); // E
 
 // LED Manager
-stormlib::aRGB_manager LEDmanager(&strand1, &strand2, nullptr, nullptr,
+stormlib::aRGB_manager LED_manager(&strand1, &strand2, nullptr, nullptr,
                                   nullptr, nullptr, nullptr, nullptr);
 
+// Control functions
+void move_intake() {
+	// <motor name>.move(a number between -127 and 127);
+	if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+		intake.move(-127); 
+	} else if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+		intake.move(127);
+	} else {
+		intake.move(0);
+	}
+}
 

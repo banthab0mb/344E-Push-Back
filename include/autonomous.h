@@ -5,9 +5,9 @@ extern rd::Selector selector;
 void default_constants();
 
 void auton();
-void moveForward();
-void driveAndTurn();
-void redLeft();
+void move_forward();
+void drive_and_turn();
+void red_left();
 
 void tug();
 void interfered_example();

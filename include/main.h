@@ -44,6 +44,8 @@
 #include "pros/apix.h"
 #include "EZ-Template/api.hpp"
 #include "robodash/views/selector.hpp"
+#include "autonomous.h"
+#include "subsystems.h"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

@@ -10,8 +10,10 @@ extern ez::tracking_wheel vert_tracker;
 // LEDs
 extern stormlib::aRGB strand1;
 extern stormlib::aRGB strand2;
-extern stormlib::aRGB_manager LEDmanager;
+extern stormlib::aRGB_manager LED_manager;
 
 // Motors
 inline pros::Motor conveyor(12);
 inline pros::MotorGroup intake({-14, 13});
+
+void move_intake();

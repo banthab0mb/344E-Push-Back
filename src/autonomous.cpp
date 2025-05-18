@@ -1,5 +1,6 @@
-#include "autonomous.h"
-#include "robotConfig.h"
+#include "main.h"
+
+using namespace pros;
 
 // Team colors
 // red = "FF0000"
@@ -7,14 +8,22 @@
 
 // Auton selector constructor
 rd::Selector selector = rd::Selector({
-    {"Move Forward", moveForward},
-    {"Drive and Turn", driveAndTurn}, // NAME THESE FOR REAL
-    {"Red Left", redLeft},
+    {"Move Forward", move_forward},
+    {"Drive and Turn", drive_and_turn},
+    {"Red Left", red_left},
 });
 
-//  Starts the auton selector.
-//  Shouldn't need anything else in here as the selector takes care of calls.
+// Sets some ez stuff
+// Starts the auton selector.
+// Shouldn't need anything else in here as the selector takes care of calls.
 void auton() {
+    chassis.pid_targets_reset();				// Resets PID targets to 0
+	chassis.drive_imu_reset();					// Reset gyro position to 0
+	chassis.drive_sensor_reset();				// Reset drive sensors to 0
+	chassis.odom_xyt_set(0_in, 0_in, 0_deg);	// Set the current position, you can start at a specific position with this
+	chassis.drive_brake_set(E_MOTOR_BRAKE_COAST);	// Set motors to hold.  This helps autonomous consistency
+    
+    // Starts auton selector
     selector.run_auton();
 }
 
@@ -65,13 +74,13 @@ void default_constants() {
 // Auton functions
 ///
 
-void moveForward() { 
+void move_forward() { 
     // Drives forward 24 inches
     chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
     chassis.pid_wait();
 }
 
-void driveAndTurn() {
+void drive_and_turn() {
     // Drive and turn test
     chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
     chassis.pid_wait();
@@ -89,12 +98,12 @@ void driveAndTurn() {
     chassis.pid_wait();
 }
 
-void redLeft() {
-    LEDmanager.setColor(0xFF0000);
+void red_left() {
+    LED_manager.setColor(0xFF0000);
 }
 
-void blueLeft() {
-    LEDmanager.setColor(0x0000FF);
+void blue_left() {
+    LED_manager.setColor(0x0000FF);
 }
 
 // Feel free to remove these examples. thought they were good to have for reference
