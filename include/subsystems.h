@@ -7,7 +7,13 @@ extern ez::Drive chassis;
 extern ez::tracking_wheel horiz_tracker;
 extern ez::tracking_wheel vert_tracker;
 
+// Clock
+extern stormlib::clock driverClock;
+
 // LEDs
+
+extern pros::adi::Led led;
+
 extern stormlib::aRGB strand1;
 extern stormlib::aRGB strand2;
 extern stormlib::aRGB_manager LED_manager;

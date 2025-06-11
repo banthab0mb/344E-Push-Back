@@ -1,4 +1,6 @@
 #include "main.h"
+#include "pros/misc.h"
+#include "pros/misc.hpp"
 
 /////
 // For installation, upgrading, documentations, and tutorials, check out our website!
@@ -43,6 +45,7 @@ void initialize() {
 	// chassis.opcontrol_curve_buttons_left_set(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);  // If using tank, only the left side is used.
 	// chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
+	led.set_all(0x0000F);
 }
 
 /**
@@ -145,6 +148,8 @@ void op_control() {
     // This is preference to what you like to drive on
 	chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
+	driverClock.start();
+
 	while(true) {
 		// Gives you some extras to make EZ-Template easier
 		ez_template_extras(); 
@@ -161,6 +166,8 @@ void op_control() {
 
         // functions etc.
 		move_intake();
+
+		master.print(1, 1, "Time: %d", driverClock.timeLeft());  // Print the time left in driver control
 
 		pros::delay(ez::util::DELAY_TIME);	// This is used for timer calculations! Keep this ez::util::DELAY_TIME
 	}

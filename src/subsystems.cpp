@@ -22,7 +22,13 @@ ez::tracking_wheel vert_tracker(9, 2.75, 4.0);   // This tracking wheel is paral
 // Motors and other devices below:
 ///
 
+// Clock
+stormlib::clock driverClock;
+
 // LEDs 
+
+pros::adi::Led led ('F', 64);
+
 stormlib::aRGB strand1(4, 41); // D
 stormlib::aRGB strand2(5, 41); // E
 
